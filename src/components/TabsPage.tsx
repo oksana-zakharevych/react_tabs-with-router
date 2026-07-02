@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { clamp } from 'cypress/types/lodash';
 import { Link, useParams } from 'react-router-dom';
 
 const tabs = [
