@@ -8,6 +8,7 @@ export const NavBar: React.FC = () => {
     <nav className="navbar is-light is-fixed-top" data-cy="Nav">
       <div className="container">
         <div className="navbar-brand">
+          {/* Для Home */}
           <div
             className={classNames('navbar-item', {
               'is-active': pathname === '/',
@@ -21,6 +22,7 @@ export const NavBar: React.FC = () => {
             </Link>
           </div>
 
+          {/* Для Tabs */}
           <div
             className={classNames('navbar-item', {
               'is-active': pathname.startsWith('/tabs'),
