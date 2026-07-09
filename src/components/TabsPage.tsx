@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import classNames from 'classnames';
 import 'react-tabs/style/react-tabs.css';
 
 const tabs = [
@@ -10,23 +9,21 @@ const tabs = [
 ];
 
 export const TabsPage: React.FC = () => {
-  const { tabId } = useParams<{ tabId: string }>();
+  const { tabId } = useParams();
   const activeTabIndex = tabs.findIndex(tab => tab.id === tabId);
 
   return (
     <>
       <h1 className="title">Tabs page</h1>
 
-      <Tabs selectedIndex={activeTabIndex === -1 ? -1 : activeTabIndex}>
+      <Tabs
+        selectedIndex={activeTabIndex === -1 ? -1 : activeTabIndex}
+        onSelect={() => {}}
+        selectedTabClassName="is-active"
+      >
         <TabList>
-          {tabs.map((tab, index) => (
-            <Tab
-              key={tab.id}
-              data-cy="Tab"
-              className={classNames('react-tabs__tab', {
-                'is-active': index === activeTabIndex,
-              })}
-            >
+          {tabs.map(tab => (
+            <Tab key={tab.id} data-cy="Tab">
               <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
             </Tab>
           ))}

@@ -3,36 +3,27 @@ import classNames from 'classnames';
 
 export const NavBar: React.FC = () => {
   const { pathname } = useLocation();
+  const isHomeActive = pathname === '/';
+  const isTabsActive = pathname.startsWith('/tabs');
 
   return (
     <nav className="navbar is-light is-fixed-top" data-cy="Nav">
       <div className="container">
         <div className="navbar-brand">
-          {/* Для Home */}
           <div
-            className={classNames('navbar-item', {
-              'is-active': pathname === '/',
-            })}
+            className={classNames('navbar-item', { 'is-active': isHomeActive })}
           >
-            <Link
-              to="/"
-              className={classNames({ 'is-active': pathname === '/' })}
-            >
+            <Link to="/" className={classNames({ 'is-active': isHomeActive })}>
               Home
             </Link>
           </div>
 
-          {/* Для Tabs */}
           <div
-            className={classNames('navbar-item', {
-              'is-active': pathname.startsWith('/tabs'),
-            })}
+            className={classNames('navbar-item', { 'is-active': isTabsActive })}
           >
             <Link
               to="/tabs"
-              className={classNames({
-                'is-active': pathname.startsWith('/tabs'),
-              })}
+              className={classNames({ 'is-active': isTabsActive })}
             >
               Tabs
             </Link>
